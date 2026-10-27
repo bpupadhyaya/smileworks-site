@@ -146,10 +146,10 @@
   function step() { return shots[0].offsetWidth + 26; }
   function goTo(i) { cur = Math.max(0, Math.min(shots.length - 1, i)); rail.scrollTo({ left: cur * step(), behavior: reduce ? 'auto' : 'smooth' }); }
   function layout() {
-    var mid = rail.scrollLeft + rail.clientWidth / 2, best = 0, bd = 1e9;
+    var mid = rail.scrollLeft + parseFloat(getComputedStyle(rail).paddingLeft) + shots[0].offsetWidth / 2, best = 0, bd = 1e9;
     shots.forEach(function (s, i) {
       var off = (s.offsetLeft + s.offsetWidth / 2 - mid) / (s.offsetWidth + 26), a = Math.max(-2.5, Math.min(2.5, off)), ab = Math.min(1, Math.abs(a));
-      s.style.transform = reduce ? '' : 'perspective(1100px) translateZ(' + (-ab * 90) + 'px) rotateY(' + (-a * 26).toFixed(1) + 'deg) scale(' + (1 - ab * 0.1).toFixed(3) + ')';
+      s.style.transform = reduce ? '' : 'perspective(1100px) translateZ(' + (-ab * 90) + 'px) rotateY(' + (-a * 22).toFixed(1) + 'deg) scale(' + (1 - ab * 0.1).toFixed(3) + ')';
       s.style.opacity = (1 - Math.min(1, Math.abs(a)) * 0.35).toFixed(2); s.style.zIndex = 10 - Math.round(Math.abs(a) * 3);
       if (Math.abs(off) < bd) { bd = Math.abs(off); best = i; }
     });
@@ -167,7 +167,7 @@
   layout();
   var inView = false;
   if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { inView = es[0].isIntersecting; }, { threshold: 0.4 }).observe(rail);
-  if (!reduce) setInterval(function () { if (inView && !userTouched) goTo(cur >= shots.length - 1 ? 0 : cur + 1); }, 3600);
+  if (!reduce) setInterval(function () { if (inView && !userTouched) goTo(rail.scrollLeft >= rail.scrollWidth - rail.clientWidth - 6 ? 0 : cur + 1); }, 3600);
 
   /* ---------- signature shapes ---------- */
   var SIG = [
