@@ -143,6 +143,7 @@
 </section>
 
 <section id="play" class="demo-sec">
+  <div class="sky" aria-hidden="true"><i class="sun"></i><i class="cloud c1"></i><i class="cloud c2"></i><i class="cloud c3"></i><i class="hill h1"></i><i class="hill h2"></i><i class="fl f1"></i><i class="fl f2"></i><i class="fl f3"></i><i class="fl f4"></i></div>
   <div class="wrap">
     <div class="center reveal">
       <div class="kicker">A taste of Snug</div>
@@ -161,19 +162,22 @@
         <p class="sub" style="margin-top:22px">This is just a little taster. The full game adds more colours, Journey levels, quests and more.</p>
       </div>
       <div class="phone" id="phone">
-        <button class="snd" id="snd" aria-label="Toggle sound" title="Sound">&#128266;</button>
         <div class="bubble" id="bubble">Hi!</div>
+        <div class="snuggle gm" id="gameMascot" data-snuggle aria-hidden="true"></div>
         <div class="hud">
-          <div class="snuggle" id="gameMascot" data-snuggle aria-hidden="true"></div>
           <div class="score"><small>SCORE</small><b id="score">0</b></div>
-          <div class="best">Best<br><span id="best">0</span></div>
+          <div class="pills"><span class="pill2">BEST <b id="best">0</b></span><span class="pill2">LV <b id="lvl">1</b></span><span class="pill2"><i class="cdot"></i><b id="comboN">0</b></span></div>
         </div>
+        <div class="meter"><i id="meter"></i></div>
         <div class="board" id="board" aria-label="Game board"></div>
+        <div class="lvlrow"><span id="lvlName">Level 1: Warm up</span><span>Today: pop 8 lines <b id="today">0</b> / 8</span></div>
+        <div class="meter gold"><i id="meter2"></i></div>
         <div class="tray" id="tray"></div>
         <div class="demo-btns">
-          <button class="mini a" id="hint">&#128161; Hint</button>
-          <button class="mini b" id="restart">&#8635; Redo</button>
-          <button class="mini c" id="shuffle">&#127922; New</button>
+          <button class="gbtn y" id="hint"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 00-4 12.7V17a1 1 0 001 1h6a1 1 0 001-1v-2.7A7 7 0 0012 2zm-3 18h6v1a3 3 0 01-6 0z" fill="currentColor"/></svg><span>Hint</span></button>
+          <button class="gbtn g" id="snd" aria-label="Toggle sound"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3zm13.5 3A4.5 4.5 0 0014 8v8a4.5 4.5 0 002.5-4zM14 3.2v2.1a7 7 0 010 13.4v2.1a9 9 0 000-17.6z" fill="currentColor"/></svg><span>Sound</span></button>
+          <button class="gbtn r" id="restart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7 6l5 4V7a5 5 0 11-5 5H5a7 7 0 107-7z" fill="currentColor"/></svg><span>Restart</span></button>
+          <button class="gbtn b" id="shuffle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3l9 10h4v2h-5L6 9H4V7zm12 0h4v2h-4l-2.2 2.4-1.4-1.5L14 7zM4 17h3l2.2-2.4 1.4 1.5L8 19H4v-2z" fill="currentColor"/></svg><span>New</span></button>
         </div>
         <div class="over" id="over">
           <div class="snuggle" data-snuggle aria-hidden="true"></div>

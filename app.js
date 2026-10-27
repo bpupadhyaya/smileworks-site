@@ -94,7 +94,7 @@
     } catch (e) { /* audio unavailable */ }
   }
   var snd = $('#snd');
-  function paintSnd() { snd.textContent = soundOn ? '🔊' : '🔇'; }
+  function paintSnd() { snd.classList.toggle('off', !soundOn); var l = snd.querySelector('span'); if (l) l.textContent = soundOn ? 'Sound' : 'Muted'; }
   snd.addEventListener('click', function () { soundOn = !soundOn; store('sw-sound', soundOn ? '1' : '0'); paintSnd(); beep(2); }); paintSnd();
 
   /* ---------- smile counter + floating tiles ---------- */
@@ -197,7 +197,7 @@
     rows.forEach(function (r, y) { r.split('').forEach(function (c, x) { if (c === 'X') cells.push([y, x]); }); });
     return { cells: cells, h: rows.length, w: rows[0].length };
   });
-  var grid, pieces, score, best = +store('sw-best') || 0, combo, selected = -1, busy = false, cellEls = [];
+  var grid, pieces, score, best = +store('sw-best') || 0, combo, selected = -1, busy = false, cellEls = [], gLines = 0, todayLines = 0, LVL_NAMES = ['Warm up', 'Getting snug', 'Big corners', 'Long and tee', 'Square one', 'Full bloom', 'Tidy tiles', 'Pop party'];
   bestEl.textContent = best;
   for (var k = 0; k < N * N; k++) { var c = document.createElement('div'); c.className = 'cell'; c.dataset.i = k; board.appendChild(c); cellEls.push(c); }
 
@@ -209,7 +209,14 @@
       if (v >= 0 && !has) { var t = document.createElement('span'); t.className = 'tile t-' + COLORS[v]; el.appendChild(t); }
       if (v >= 0 && has) has.className = 'tile t-' + COLORS[v];
     }
-    scoreEl.textContent = score;
+    scoreEl.textContent = score; updateHud();
+  }
+  function updateHud() {
+    var lvl = 1 + Math.floor(gLines / 4), set = function (id, fn) { var e = $(id); if (e) fn(e); };
+    set('#lvl', function (e) { e.textContent = lvl; }); set('#comboN', function (e) { e.textContent = combo || 0; });
+    set('#lvlName', function (e) { e.textContent = 'Level ' + lvl + ': ' + LVL_NAMES[(lvl - 1) % LVL_NAMES.length]; });
+    set('#meter', function (e) { e.style.width = (6 + (gLines % 4) / 4 * 94).toFixed(0) + '%'; });
+    set('#today', function (e) { e.textContent = Math.min(8, todayLines); }); set('#meter2', function (e) { e.style.width = (Math.min(8, todayLines) / 8 * 100) + '%'; });
   }
   function newPiece() { var s = SHAPES[(Math.random() * SHAPES.length) | 0]; return { cells: s.cells, w: s.w, h: s.h, color: (Math.random() * COLORS.length) | 0 }; }
   function drawTray() {
@@ -233,7 +240,7 @@
   function anyFits(p) { for (var r = 0; r < N; r++) for (var c = 0; c < N; c++) if (fits(p, r, c)) return [r, c]; return null; }
   function reset() {
     grid = []; for (var r = 0; r < N; r++) { grid.push([]); for (var c = 0; c < N; c++) grid[r].push(-1); }
-    score = 0; combo = 0; selected = -1; busy = false; over.classList.remove('show');
+    score = 0; combo = 0; gLines = 0; selected = -1; busy = false; over.classList.remove('show');
     pieces = [newPiece(), newPiece(), newPiece()]; render(); drawTray(); say('Hi! Fit the shapes.', 2200);
   }
   function clearGhost() { cellEls.forEach(function (e) { e.classList.remove('ghost', 'bad', 'preview-line'); e.style.removeProperty('--gc'); }); }
@@ -296,7 +303,7 @@
     for (var x = 0; x < N; x++) { var full = true; for (var yy = 0; yy < N; yy++) if (grid[yy][x] < 0) { full = false; break; } if (full) cols.push(x); }
     var lines = rows.length + cols.length, br = board.getBoundingClientRect(), cs = br.width / N;
     if (lines) {
-      combo++; var gain = lines * lines * 10 + (combo - 1) * 10, cols2 = [];
+      combo++; gLines += lines; todayLines += lines; var gain = lines * lines * 10 + (combo - 1) * 10, cols2 = [];
       var kill = {}; rows.forEach(function (y) { for (var x = 0; x < N; x++) kill[y * N + x] = 1; }); cols.forEach(function (x) { for (var y = 0; y < N; y++) kill[y * N + x] = 1; });
       Object.keys(kill).forEach(function (k) { var v = grid[(k / N) | 0][k % N]; cols2.push(COLORS[v]); cellEls[k].classList.add('clearing'); });
       for (var n = 0; n < lines + 2; n++) setTimeout(beep.bind(null, n + 1, 0.22), n * 70);
