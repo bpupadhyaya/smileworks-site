@@ -134,15 +134,40 @@
     document.body.appendChild(s); setTimeout(function () { s.remove(); }, 700);
   });
 
-  /* ---------- gallery ---------- */
-  var rail = $('#rail');
+  /* ---------- gallery: 3D coverflow ---------- */
+  var rail = $('#rail'), dotsEl = $('#dots'), shots = [], cur = 0, userTouched = false;
   for (var g = 1; g <= 8; g++) {
     var im = new Image(); im.src = 'assets/shot-' + g + '.jpg'; im.alt = 'Snug gameplay screenshot ' + g + ' of 8';
-    im.width = 540; im.height = 960; im.loading = 'lazy';
-    var f = document.createElement('div'); f.className = 'shot'; f.appendChild(im); rail.appendChild(f);
+    im.width = 540; im.height = 960; im.loading = g < 4 ? 'eager' : 'lazy'; im.decoding = 'async';
+    var f = document.createElement('div'); f.className = 'shot'; f.appendChild(im); rail.appendChild(f); shots.push(f);
+    var d = document.createElement('i'); d.dataset.i = g - 1; dotsEl.appendChild(d);
   }
-  $('#next').onclick = function () { rail.scrollBy({ left: 300, behavior: 'smooth' }); };
-  $('#prev').onclick = function () { rail.scrollBy({ left: -300, behavior: 'smooth' }); };
+  var dots = [].slice.call(dotsEl.children);
+  function step() { return shots[0].offsetWidth + 26; }
+  function goTo(i) { cur = Math.max(0, Math.min(shots.length - 1, i)); rail.scrollTo({ left: cur * step(), behavior: reduce ? 'auto' : 'smooth' }); }
+  function layout() {
+    var mid = rail.scrollLeft + rail.clientWidth / 2, best = 0, bd = 1e9;
+    shots.forEach(function (s, i) {
+      var off = (s.offsetLeft + s.offsetWidth / 2 - mid) / (s.offsetWidth + 26), a = Math.max(-2.5, Math.min(2.5, off)), ab = Math.min(1, Math.abs(a));
+      s.style.transform = reduce ? '' : 'perspective(1100px) translateZ(' + (-ab * 90) + 'px) rotateY(' + (-a * 26).toFixed(1) + 'deg) scale(' + (1 - ab * 0.1).toFixed(3) + ')';
+      s.style.opacity = (1 - Math.min(1, Math.abs(a)) * 0.35).toFixed(2); s.style.zIndex = 10 - Math.round(Math.abs(a) * 3);
+      if (Math.abs(off) < bd) { bd = Math.abs(off); best = i; }
+    });
+    cur = best; dots.forEach(function (d, i) { d.classList.toggle('on', i === best); });
+  }
+  var ticking = false;
+  rail.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; layout(); }); } }, { passive: true });
+  addEventListener('resize', layout);
+  shots.forEach(function (s, i) { s.addEventListener('click', function () { userTouched = true; goTo(i); }); });
+  dots.forEach(function (d, i) { d.addEventListener('click', function () { userTouched = true; goTo(i); }); });
+  $('#next').onclick = function () { userTouched = true; goTo(cur + 1); };
+  $('#prev').onclick = function () { userTouched = true; goTo(cur - 1); };
+  ['pointerdown', 'wheel', 'touchstart', 'keydown'].forEach(function (ev) { rail.addEventListener(ev, function () { userTouched = true; }, { passive: true }); });
+  rail.tabIndex = 0; rail.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') goTo(cur + 1); if (e.key === 'ArrowLeft') goTo(cur - 1); });
+  layout();
+  var inView = false;
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { inView = es[0].isIntersecting; }, { threshold: 0.4 }).observe(rail);
+  if (!reduce) setInterval(function () { if (inView && !userTouched) goTo(cur >= shots.length - 1 ? 0 : cur + 1); }, 3600);
 
   /* ---------- signature shapes ---------- */
   var SIG = [
@@ -317,7 +342,7 @@
     requestAnimationFrame(sway);
   })(performance.now());
 
-  [].forEach.call(document.querySelectorAll('.game-card,.shot,.shape,.feat,.step,.final-img'), function (el) { el.setAttribute('data-tilt', ''); });
+  [].forEach.call(document.querySelectorAll('.game-card,.shape,.feat,.step,.final-img'), function (el) { el.setAttribute('data-tilt', ''); });
   [].forEach.call(document.querySelectorAll('[data-tilt]'), function (el) {
     el.addEventListener('pointermove', function (e) {
       if (e.pointerType !== 'mouse') return;
