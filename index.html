@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>smileworks: little games, big smiles</title>
+<meta name="description" content="smileworks makes cheerful, mind-refreshing mobile games for everyone. Meet Snug, the shape-fitting puzzle that ends every round with a smile. Try it right here.">
+<meta name="theme-color" content="#6d5ce8">
+<link rel="canonical" href="https://equalinformation.com/smileworks-site/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="smileworks: little games, big smiles">
+<meta property="og:description" content="Cheerful puzzle games for everyone. Play a taste of Snug right in your browser.">
+<meta property="og:image" content="https://equalinformation.com/smileworks-site/assets/snug-feature.jpg">
+<meta property="og:url" content="https://equalinformation.com/smileworks-site/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/snug-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="smileworks home"><span class="tile t-yellow"></span>smileworks</a>
+    <ul>
+      <li><a href="#games">Games</a></li>
+      <li><a href="#play">Play</a></li>
+      <li><a href="#shots">Peek</a></li>
+      <li><a href="#smile">Snuggle</a></li>
+      <li><a href="#contact">Say hi</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="float-tiles" id="floatTiles" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="eyebrow">&#10024; Cheerful games for every age</span>
+      <div class="wordmark" id="wordmark" aria-label="smileworks"></div>
+      <h1>Little games. Big smiles.</h1>
+      <p class="lede">Bright, gentle, brain-refreshing puzzles you can pick up in a second and still be smiling about an hour later.</p>
+      <div class="cta">
+        <a class="btn btn-play" href="#play">&#9654; Play Snug right here</a>
+        <a class="btn btn-ghost" href="#steps">See how it feels</a>
+      </div>
+      <div class="smile-count">Smiles made on this page: <b id="smileCount">0</b> &#128522;<br><small>(pop the floating tiles!)</small></div>
+    </div>
+    <div class="stage" id="stage">
+      <div class="phone3d" id="phone3d">
+        <div class="glow"></div>
+        <div class="bezel"><img src="assets/shot-1.jpg" alt="Snug gameplay: a bright board of glossy tiles with a Bloom bonus popping" width="540" height="960"><i class="sheen"></i></div>
+        <div class="layer l1"><span class="bonus">Bloom! +280</span></div>
+        <div class="layer l2"><span class="tile t-yellow"></span></div>
+        <div class="layer l3"><span class="tile t-teal"></span></div>
+        <div class="layer l4 snuggle" data-snuggle aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+<section id="games">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="kicker">The games</div>
+      <h2>Pick a game. Pick a smile.</h2>
+      <p class="sub">Every smileworks game is built from scratch, runs offline, needs no account and is made to feel good in your hands.</p>
+    </div>
+    <div class="games">
+      <article class="card game-card reveal">
+        <img class="feat-img" src="assets/snug-feature.jpg" alt="Snug: colourful tiles spelling the game name, with the pink mascot Snuggle waving" width="1024" height="500">
+        <div class="game-body">
+          <div class="game-head">
+            <img src="assets/snug-icon.png" alt="Snug app icon" width="76" height="76">
+            <div><h3>Snug</h3><p>Fit. Clear. Smile.</p></div>
+          </div>
+          <p>Drag colourful shapes into the gaps, make rows and columns pop, and build each colour&rsquo;s signature shape to earn shiny rewards. Easy to learn, deeply satisfying to master.</p>
+          <div class="tags"><span class="pill">Puzzle</span><span class="pill">All ages</span><span class="pill">Offline</span><span class="pill">No account</span><span class="pill">Free to play</span></div>
+          <div class="store-row"><span class="store">&#9654; Google Play: landing soon</span><span class="store">&#63743; iPhone: later</span></div>
+          <div class="cta" style="justify-content:flex-start"><a class="btn btn-play" href="#play">Try it now</a></div>
+        </div>
+      </article>
+      <article class="card soon reveal">
+        <div class="mystery" aria-hidden="true">
+          <span class="tile t-teal" style="--i:0"></span><span class="tile t-pink" style="--i:1"></span><span class="tile t-orange" style="--i:2"></span>
+          <span class="tile t-indigo" style="--i:3"></span><span class="tile t-yellow q" style="--i:4">?</span><span class="tile t-green" style="--i:5"></span>
+        </div>
+        <h3>More smiles are brewing</h3>
+        <p>The next game is already on the workbench. Same kindness, new tricks.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="steps" class="steps-sec">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="kicker">Fit. Clear. Smile.</div>
+      <h2>Three little moves. One big grin.</h2>
+      <p class="sub">That is the whole game. Here is how it feels.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="scene s-fit" aria-hidden="true">
+          <div class="mini-board">
+            <span class="tile t-blue" style="--c0:0;--r0:2"></span><span class="tile t-red" style="--c0:1;--r0:2"></span>
+            <span class="tile t-green" style="--c0:3;--r0:2"></span><span class="tile t-orange" style="--c0:4;--r0:2"></span>
+            <span class="tile t-pink" style="--c0:0;--r0:1"></span><span class="tile t-teal" style="--c0:4;--r0:1"></span>
+            <span class="tile t-yellow drop" style="--c0:2;--r0:2"></span><span class="ring"></span>
+          </div>
+        </div>
+        <h3><b>1</b> Fit</h3><p>Drag a shape into the gap. It lands with a satisfying squish.</p>
+      </div>
+      <div class="step reveal">
+        <div class="scene s-clear" aria-hidden="true">
+          <div class="pop-row"><span class="tile t-blue"></span><span class="tile t-red"></span><span class="tile t-yellow"></span><span class="tile t-green"></span><span class="tile t-orange"></span></div>
+          <span class="spark sp1"></span><span class="spark sp2"></span><span class="spark sp3"></span><em class="plus">+120</em>
+        </div>
+        <h3><b>2</b> Clear</h3><p>Complete a row or column and it pops. Clear two at once for combos.</p>
+      </div>
+      <div class="step reveal">
+        <div class="scene s-smile" aria-hidden="true">
+          <div class="snuggle cheer" data-snuggle></div>
+          <span class="conf c1"></span><span class="conf c2"></span><span class="conf c3"></span><span class="conf c4"></span><span class="conf c5"></span><span class="conf c6"></span>
+        </div>
+        <h3><b>3</b> Smile</h3><p>Snuggle cheers, the colours sparkle, and you reach for one more round.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap stat-row">
+    <div class="stat reveal"><span class="tile t-blue"></span><b data-count="8">8</b><span>colours to master</span></div>
+    <div class="stat reveal"><span class="tile t-red"></span><b data-count="8">8</b><span>signature shapes</span></div>
+    <div class="stat reveal"><span class="tile t-green"></span><b>0</b><span>accounts to create</span></div>
+    <div class="stat reveal"><span class="tile t-yellow"></span><b>&infin;</b><span>endless play</span></div>
+  </div>
+</section>
+
+<section id="play" class="demo-sec">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="kicker">A taste of Snug</div>
+      <h2>Go on, play a round.</h2>
+      <p class="sub">Drag a piece onto the board (or tap a piece, then tap the board). Fill a row or column to make it pop.</p>
+    </div>
+    <div class="demo">
+      <div class="demo-copy reveal">
+        <h3 style="font-family:Fredoka;font-size:1.6rem;margin:0">How it goes</h3>
+        <ul>
+          <li><span class="tile t-blue"></span>Grab a shape from the tray</li>
+          <li><span class="tile t-red"></span>Drop it where it fits snugly</li>
+          <li><span class="tile t-yellow"></span>Complete a line and watch it pop</li>
+          <li><span class="tile t-green"></span>Clear two at once for combo cheers</li>
+        </ul>
+        <p class="sub" style="margin-top:22px">This is just a little taster. The full game adds more colours, Journey levels, quests and more.</p>
+      </div>
+      <div class="phone" id="phone">
+        <button class="snd" id="snd" aria-label="Toggle sound" title="Sound">&#128266;</button>
+        <div class="bubble" id="bubble">Hi!</div>
+        <div class="hud">
+          <div class="snuggle" id="gameMascot" data-snuggle aria-hidden="true"></div>
+          <div class="score"><small>SCORE</small><b id="score">0</b></div>
+          <div class="best">Best<br><span id="best">0</span></div>
+        </div>
+        <div class="board" id="board" aria-label="Game board"></div>
+        <div class="tray" id="tray"></div>
+        <div class="demo-btns">
+          <button class="mini a" id="hint">&#128161; Hint</button>
+          <button class="mini b" id="restart">&#8635; Redo</button>
+          <button class="mini c" id="shuffle">&#127922; New</button>
+        </div>
+        <div class="over" id="over">
+          <div class="snuggle" data-snuggle aria-hidden="true"></div>
+          <h3>That was snug!</h3>
+          <p id="overMsg">Score 0</p>
+          <button class="btn btn-play" id="again">Play again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="shots">
+  <div class="wrap center reveal">
+    <div class="kicker">Peek inside</div>
+    <h2>Looks as good as it feels.</h2>
+    <p class="sub">Glossy candy tiles, juicy pops, and a cheerful pink friend cheering you on.</p>
+  </div>
+  <div class="gallery">
+    <div class="rail" id="rail"></div>
+    <div class="arrows"><button class="arr" id="prev" aria-label="Previous screenshot">&#8592;</button><button class="arr" id="next" aria-label="Next screenshot">&#8594;</button></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="kicker">Signature shapes</div>
+      <h2>Every colour has a favourite shape.</h2>
+      <p class="sub">Build a colour&rsquo;s signature shape on the board and it blooms for a bonus. New colours join as you level up, from 3 all the way to 8.</p>
+    </div>
+    <div class="shapes" id="shapes"></div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="kicker">Why you&rsquo;ll love it</div>
+      <h2>Made to feel good.</h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat reveal"><span class="tile t-blue">&#9786;</span><h3>Easy to start</h3><p>One tiny idea: fit the shape. You will be playing before you finish reading this.</p></div>
+      <div class="feat reveal"><span class="tile t-red">&#9733;</span><h3>Deeply satisfying</h3><p>Snug fits, combos and shape blooms keep every move interesting, never stressful.</p></div>
+      <div class="feat reveal"><span class="tile t-yellow">&#9728;</span><h3>Journey or endless</h3><p>Handcrafted Journey levels when you want a path, endless play when you want to drift.</p></div>
+      <div class="feat reveal"><span class="tile t-green">&#10022;</span><h3>Shiny rewards</h3><p>Earn polished, gilded and radiant tile finishes just by playing well.</p></div>
+      <div class="feat reveal"><span class="tile t-orange">&#9992;</span><h3>Play anywhere</h3><p>Works offline. No account, no sign-up, no fuss.</p></div>
+      <div class="feat reveal"><span class="tile t-teal">&#9829;</span><h3>Fair and friendly</h3><p>Free to play with ads, and a one-time Remove Ads purchase if you like it quiet.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="meet" id="smile">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker">Meet Snuggle</div>
+      <h2>Your cheerful cheerleader.</h2>
+      <p class="sub">Snuggle blinks, cheers on every combo and does a happy dance when you win. Say hi: tap, and watch those eyes follow you around.</p>
+    </div>
+    <div class="snuggle big" id="bigMascot" data-snuggle role="img" aria-label="Snuggle, the pink bear mascot"></div>
+  </div>
+</section>
+<section class="final" id="get">
+  <div class="wrap center">
+    <div class="reveal">
+      <div class="kicker" style="color:#ffe08a">Ready?</div>
+      <h2>Your next favourite smile is one tap away.</h2>
+      <p class="sub" style="color:rgba(255,255,255,.95)">Snug is heading to Google Play. Play the taster now, and say hi if you want a nudge when it lands.</p>
+      <img class="final-img" src="assets/snug-feature.jpg" alt="Snug title made of colourful tiles with Snuggle the mascot" width="1024" height="500" data-tilt>
+      <div class="cta">
+        <a class="btn btn-play" href="#play">&#9654; Play the taster</a>
+        <a class="btn btn-ghost" href="mailto:support@equalinformation.com?subject=Tell%20me%20when%20Snug%20is%20live">&#128140; Tell me when it&rsquo;s live</a>
+      </div>
+      <p class="store-note">Google Play: landing soon &middot; iPhone: later</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="brand"><span class="tile t-yellow"></span>smileworks</div>
+    <p>Little games, big smiles. Made with care.</p>
+    <nav>
+      <a href="https://equalinformation.com/privacy-snug.html">Snug privacy policy</a>
+      <a href="https://equalinformation.com/app-support-snug.html">Snug support</a>
+      <a href="https://equalinformation.com/">EqualInformation</a>
+    </nav>
+    <p>Questions or a kind word? <a href="mailto:support@equalinformation.com">support@equalinformation.com</a></p>
+    <small>&copy; 2026 EqualInformation, LLC. smileworks games are designed and built from scratch.</small>
+  </div>
+</footer>
+
+<a class="fab" id="fab" href="#play">&#9654; Play Snug</a>
+<canvas id="confetti"></canvas>
+<script src="app.js"></script>
+</body>
+</html>
