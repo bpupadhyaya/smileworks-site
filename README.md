@@ -2,6 +2,8 @@
 
 Public marketing site for **smileworks**, makers of cheerful, mind-refreshing mobile games. Currently featuring **Snug**.
 
+Snug on Google Play: https://play.google.com/store/apps/details?id=com.equalinformation.snugpuzzle
+
 Live: https://equalinformation.com/smileworks-site/
 
 Plain static site (no build step): `index.html`, `style.css`, `app.js`, `assets/`.
