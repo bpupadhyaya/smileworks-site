@@ -349,7 +349,7 @@
     requestAnimationFrame(sway);
   })(performance.now());
 
-  [].forEach.call(document.querySelectorAll('.game-card,.shape,.feat,.step,.final-img'), function (el) { el.setAttribute('data-tilt', ''); });
+  [].forEach.call(document.querySelectorAll('.game-card,.next-card,.shape,.feat,.step,.final-img'), function (el) { el.setAttribute('data-tilt', ''); });
   [].forEach.call(document.querySelectorAll('[data-tilt]'), function (el) {
     el.addEventListener('pointermove', function (e) {
       if (e.pointerType !== 'mouse') return;
